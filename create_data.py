@@ -6,7 +6,7 @@ from tensorflow.keras.utils import to_categorical
 
 #import dataset
 def create_data():
-    df=pd.read_csv("D:\Projects\Word Predictor\HappyDB\happydb\data\cleaned_hm.csv"
+    df=pd.read_csv("HappyDB\happydb\data\cleaned_hm.csv"
                
 )
     df=df['cleaned_hm'].iloc[:10000]
