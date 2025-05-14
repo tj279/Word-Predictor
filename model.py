@@ -8,6 +8,7 @@ import json
 def create_model(vocab_size, input_length):
     model = Sequential()
     model.add(Embedding(vocab_size, 200, input_length=input_length))
+    model.add(LSTM(256,return_sequences=True))
     model.add(LSTM(256))
     model.add(Dense(vocab_size, activation='softmax'))
     return model
@@ -25,7 +26,7 @@ inputs,outputs,input_length,vocab_size,tokenizer=create_data()
 model = create_model(vocab_size, input_length)
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 model.summary()
-model.fit(inputs, outputs, epochs=15, batch_size=256,verbose=1)
+model.fit(inputs, outputs, epochs=50, batch_size=256,verbose=1)
 
 model.save('word_predictor_model.h5')
 
